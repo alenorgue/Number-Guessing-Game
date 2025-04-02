@@ -54,3 +54,4 @@ form.addEventListener('submit', function(event) {
     checkGuess();
 
 });
+
