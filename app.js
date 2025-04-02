@@ -16,12 +16,13 @@ function checkGuess() {
         message.textContent = 'Enter a valid number between 1 and 100.';
         return;
     }
+    
     if (previousGuessed.includes(userGuess)) {
         message.textContent = 'You already tried that number';
         return;
     }
     previousGuessed.push(userGuess);
-    previousGuess.textContent = previousGuessed.textContent;
+    previousGuess.textContent = previousGuessed.join(', ');
     attemptsLeft--;
     remainingGuess.textContent = `${attemptsLeft}`;
     if (userGuess > correctNumber) {
@@ -37,19 +38,19 @@ function checkGuess() {
         disableInput();
         return;
     }
-    else if (attemptsLeft === 0) {
+    else if (attemptsLeft === 0 && userGuess !== correctNumber) {
         message.textContent = `Game over! The correct number was ${correctNumber}.`;
         disableInput();
         return;}
 
 }
 function disableInput() {
-    document.getElementById('user-input').disabled = true;
-    document.getElementById('submit-btn').disabled = true;
+    document.getElementById('guessField').disabled = true;
+    document.getElementById('subt').disabled = true;
 }
 
-form.addEventListener('submit', function(event)) {
+form.addEventListener('submit', function(event) {
     event.preventDefault();
-    checkGuess|();
+    checkGuess();
 
-}
+});

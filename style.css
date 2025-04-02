@@ -88,3 +88,7 @@ p {
     font-size: 20px;
     text-align: center;
 }
+p.lowOrHi {
+    font-weight: bold;
+    background-color: #7b3056;
+}
