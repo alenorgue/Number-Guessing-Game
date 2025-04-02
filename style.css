@@ -92,3 +92,6 @@ p.lowOrHi {
     font-weight: bold;
     background-color: #7b3056;
 }
+.reset-btn {
+    display: none;
+}

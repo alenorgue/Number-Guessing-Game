@@ -5,9 +5,8 @@ const previousGuessed = [];
 const previousGuess = document.getElementById('previous-guesses');
 const remainingGuess = document.getElementById('remaining-guesses');
 const message = document.getElementById('message');
+const resetButton = document.getElementById("reset-btn");
 let attemptsLeft = 10;
-
-
 
 function checkGuess() {
     const input = document.getElementById('guessField').value;
@@ -16,7 +15,7 @@ function checkGuess() {
         message.textContent = 'Enter a valid number between 1 and 100.';
         return;
     }
-    
+
     if (previousGuessed.includes(userGuess)) {
         message.textContent = 'You already tried that number';
         return;
@@ -41,17 +40,22 @@ function checkGuess() {
     else if (attemptsLeft === 0 && userGuess !== correctNumber) {
         message.textContent = `Game over! The correct number was ${correctNumber}.`;
         disableInput();
-        return;}
+        return;
+    }
 
 }
 function disableInput() {
     document.getElementById('guessField').disabled = true;
     document.getElementById('subt').disabled = true;
+    document.getElementById("reset-btn").style.display = "inline-block";
 }
-
-form.addEventListener('submit', function(event) {
+function resetGame() {
+    location.reload();
+}
+form.addEventListener('submit', function (event) {
     event.preventDefault();
     checkGuess();
 
 });
 
+resetButton.addEventListener('click', resetGame);
